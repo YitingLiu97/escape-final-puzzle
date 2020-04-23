@@ -1,8 +1,13 @@
 $(document).ready(function () {
+    const socket = io();
+    socket.on('connect', function () {
+        console.log("Socket connected");
+    });
 
     let currentEntry = ''
     // TODO: Move the solution checking portion to server side
-    let solution = '314101894245'
+    let solution = '111111111111'
+    // let solution = '314101894245'
 
     addEntry = function(submittedNumber) {
         if (currentEntry.length < 12) {
@@ -22,7 +27,7 @@ $(document).ready(function () {
         
         if(currentEntry.length == 12) {
             if(currentEntry == solution) {
-                alert("You did it! You're all out of the room. Congrats!")
+                escape();
             } else {
                 console.log('wrong answer')
                 for (let i = 0; i < currentEntry.length; i++) {
@@ -54,6 +59,11 @@ $(document).ready(function () {
     clearDisplay = function() {
         currentEntry = ''
         updateDisplay();
+    }
+
+    escape = function() {
+        window.alert("You did it! You're all out of the room. Congrats! \nNow go out and inform the world of the professor's atrocities!")
+        socket.emit('command', 'ESCAPE');
     }
 
 

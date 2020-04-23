@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escape Room Final Status</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
 
 <body onclick="onClick(event)" onmousemove="onMouseMove(event)">
@@ -29,113 +30,13 @@
             <iframe src="/key"></iframe>
         </div>
     </div>
+    <div id="escapeModalContainer" class="modal">
+        <div class="modal-content">
+            <iframe src="https://giphy.com/gifs/congratulations-congrats-xT0xezQGU5xCDJuCPe/fullscreen"></iframe>
+        </div>
+    </div>
 
-    <script>
-        let content = document.getElementById('content');
-        let computerImg = document.getElementById('computer');
-        let poemImg = document.getElementById('poem');
-        let recipeImg = document.getElementById('recipe');
-        let backgroundImg = document.getElementById('backgroundImg');
-
-        function onClick(e) {
-            const x = e.clientX;
-            const y = e.clientY;
-
-            const recipeX = 35.3 / 100 * window.innerWidth;
-            const recipeY = 18.9 / 100 * window.innerWidth;
-            const recipeR = 2.5 / 100 * window.innerWidth;
-            const poemX = 60.8 / 100 * window.innerWidth;
-            const poemY = 29.3 / 100 * window.innerWidth;
-            const poemR = 1.5 / 100 * window.innerWidth;
-            const compX = 44.8 / 100 * window.innerWidth;
-            const compY = 25.4 / 100 * window.innerWidth;
-            const compR = 4.3 / 100 * window.innerWidth;
-            const keyX = 12.5 / 100 * window.innerWidth;
-            const keyY = 29.2 / 100 * window.innerWidth;
-            const keyR = 1.5 / 100 * window.innerWidth;
-
-            const distToRecipe = dist(x, y, recipeX, recipeY);
-            const distToPoem = dist(x, y, poemX, poemY);
-            const distToComp = dist(x, y, compX, compY);
-            const distToKey = dist(x, y, keyX, keyY);
-
-            if (distToRecipe <= recipeR) {
-                content.style.display = "block";
-                recipeImg.style.display = "block";
-                poemImg.style.display = "none";
-                computerImg.style.display = "none";
-            } else if (distToPoem <= poemR) {
-                content.style.display = "block";
-                poemImg.style.display = "block";
-                computerImg.style.display = "none";
-                recipeImg.style.display = "none";
-
-            } else if (distToComp <= compR) {
-                openComputerModal()
-            } else if (distToKey <= keyR) {
-                openKeyModal()
-            } else {
-                content.style.display = "none";
-            }
-
-        }
-
-        function onMouseMove(e) {
-            const x = e.clientX;
-            const y = e.clientY;
-
-            const recipeX = 35.3 / 100 * window.innerWidth;
-            const recipeY = 18.9 / 100 * window.innerWidth;
-            const recipeR = 2.5 / 100 * window.innerWidth;
-            const poemX = 60.8 / 100 * window.innerWidth;
-            const poemY = 29.3 / 100 * window.innerWidth;
-            const poemR = 1.5 / 100 * window.innerWidth;
-            const compX = 44.8 / 100 * window.innerWidth;
-            const compY = 25.4 / 100 * window.innerWidth;
-            const compR = 4.3 / 100 * window.innerWidth;
-            const keyX = 12.5 / 100 * window.innerWidth;
-            const keyY = 29.2 / 100 * window.innerWidth;
-            const keyR = 1.5 / 100 * window.innerWidth;
-
-            const distToRecipe = dist(x, y, recipeX, recipeY);
-            const distToPoem = dist(x, y, poemX, poemY);
-            const distToComp = dist(x, y, compX, compY);
-            const distToKey = dist(x, y, keyX, keyY);
-
-            if (distToRecipe <= recipeR || distToPoem <= poemR || distToComp <= compR || distToKey <= keyR) {
-                backgroundImg.style.cursor = 'pointer'
-            } else {
-                backgroundImg.style.cursor = 'default'
-            }
-        }
-
-        function dist(x1, y1, x2, y2) {
-            return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-        }
-
-        const computerModalContainer = document.getElementById("computerModalContainer");
-        const keyModalContainer = document.getElementById("keyModalContainer");
-
-        function openComputerModal() {
-            computerModalContainer.style.display = "block";
-        }
-        function openKeyModal() {
-            keyModalContainer.style.display = "block";
-        }
-        function closeComputerModal() {
-            computerModalContainer.style.display = "none";
-        }
-        function closeKeyModal() {
-            keyModalContainer.style.display = "none";
-        }
-
-        window.onclick = function (event) {
-            if (event.target == computerModalContainer) closeComputerModal();
-            if (event.target == keyModalContainer) closeComputerModal();
-        }
-
-
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
