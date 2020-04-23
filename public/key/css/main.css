@@ -1,0 +1,70 @@
+@font-face {
+    font-family: flappyFont;
+    src: url(assets/flappyFont.TTF);
+}
+#main-container{
+    width: 100%;
+    background-color: #aeb8ba;
+    padding:30px;
+}
+#title-banner{
+    margin-bottom: 50px;
+}
+.banner-text{
+    font-family:flappyFont;
+    font-size: 2em;
+    text-align: center;
+    padding-bottom:10px;
+}
+.game-text{
+    font-family:flappyFont;
+    font-size: 6em;
+    text-align: center;
+    padding-bottom:10px;
+}
+.game-box{
+    margin: 0px auto;
+    display: relative;
+    width: 70%;
+}
+canvas{
+    background-color:#000;
+    border:2px solid green;
+}
+.keypad-row{
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+}
+.btn-keypad{
+    font-family: flappyFont;
+    text-align: center;
+    font-size: 2em;
+    width: 70px;
+    margin: 6px;
+    display: table-cell;
+}
+.btn-entry{
+    font-family: flappyFont;
+    text-align: center;
+    font-size: 2em;
+    min-width: 1.5em;
+    margin: 6px;
+    display: table-cell;
+    width: 50px;
+}
+.outer {
+    background-color: #aeb8ba;
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+}
