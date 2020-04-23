@@ -6,8 +6,8 @@ $(document).ready(function () {
 
     let currentEntry = ''
     // TODO: Move the solution checking portion to server side
-    let solution = '111111111111'
-    // let solution = '314101894245'
+    // let solution = '111111111111'
+    let solution = '314101894245'
 
     addEntry = function(submittedNumber) {
         if (currentEntry.length < 12) {
