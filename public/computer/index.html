@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Pattern Recognition Puzzle</title>
+
+</head>
+
+<body>
+
+  <!-- this will show after three attempts of the button -->
+  <!-- <div id="hint">
+        <p>up or low, is it your decision or mine?</p>
+    </div> -->
+
+
+  <div id="puzzleIntro">
+    <p>You and your collegues are locked in the room and you only have 10 minutes to figure out the combination of a
+      12-digit lock
+      before the professor comes back from his lunch break. </p>
+
+    <p>You find a computer in the room with some instructions. Only after you follow the instructions will you get a
+      four-digit password
+      that is part of the 12-digit code to unlock the padlock. </p>
+    <p> Are you ready to crack the code? </p>
+
+    <button id="ready"
+      onclick="document.getElementById('patternRecognitionPuzzle').style.display='block',document.getElementById('puzzleIntro').style.display='none';">I
+      am ready. </button>
+  </div>
+  <div id="patternRecognitionPuzzle">
+
+    <div id="motto">
+      <h1>Motto: I Do ThINGs WhEn i aM ToLD Not To.</h1>
+    </div>
+
+    <div class="container">
+
+      <p class="item">password</p>
+      <input class="item" id="userInput" type="text" placeholder="******************"
+        onmouseover="placeholder='_ __ ______ ____ _ __ ____ ___ __'">
+      <!-- <p > -->
+
+      <img class="item" onmouseover="alert('Follow what you see.')"
+        src="https://image.flaticon.com/icons/svg/818/818400.svg" alt="information icon">
+      <!-- </p>  -->
+    </div>
+
+    <div id="userSubmit">
+      <button type="submit" onclick="showResult()"> submit</button>
+    </div>
+  </div>
+
+  <script>
+    let counter = 0;
+
+
+    function showResult() {
+      let password = 'i dO tHingS wHeN I Am tOld nOT tO';
+      if (document.getElementById("userInput").value == password) {
+
+        alert("Congrats! Your digits are: 0189");
+        //   counter=0;
+      } else {
+        counter++;
+        console.log(counter);
+
+        if (counter == 3) {
+          alert('up or low, is it your decision or mine?');
+          counter = 0;
+        } else {
+          alert("Incorrect!");
+        }
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>

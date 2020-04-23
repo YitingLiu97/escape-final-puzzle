@@ -16,41 +16,31 @@
     <div>
         <img id="backgroundImg" src="assets/secret-room-the-professor-final.png" alt="">
     </div>
-
-
-
     <div id="content" class="enlarge">
-
-
-        <!-- need to figure out how to put iframe ontop of the image -->
-        <div class="iframeItem">
-            <iframe class="item" id="computerWeb"
-                src="https://yitingliu97-escape-room-puzzles-1.glitch.me/Escape-Room-Pattern-Recognition-Puzzle/index.html"
-                frameborder="0"></iframe>
-
-        </div>
-
-
         <img id="computer" class="item" src="assets/computer-withOUT-text.png" alt="">
-
         <img id="poem" class="item" src="assets/poem.jpg" alt="">
         <img id="recipe" class="item" src="assets/recipe.png" alt="">
-        <!-- <img class="item" style="height:70%"src="assets/keypad.png" alt=""> -->
-
+    </div>
+    <div id="computerModalContainer" class="modal">
+        <div class="modal-content" id="computerModalContainer">
+            <div>
+                <span class="close" onclick="closeComputerModal()">&times;</span>
+            </div>
+            <div>
+                <iframe src="/computer"></iframe>
+            </div>
+            
+            
+        </div>
+    
     </div>
     <script>
-
         let content = document.getElementById('content');
         let computerImg = document.getElementById('computer');
         let poemImg = document.getElementById('poem');
         let recipeImg = document.getElementById('recipe');
         let backgroundImg = document.getElementById('backgroundImg');
 
-        // window.onclick = function (event) {
-        //     if (event.target == content) {
-        //         content.style.display = "none";
-        //     }
-        // }
         function onClick(e) {
             const x = e.clientX;
             const y = e.clientY;
@@ -74,31 +64,20 @@
             const distToKey = dist(x, y, keyX, keyY);
 
             if (distToRecipe <= recipeR) {
-                // alert('you selected the recipe!');
                 content.style.display = "block";
                 recipeImg.style.display = "block";
                 poemImg.style.display = "none";
                 computerImg.style.display = "none";
-                // console.log("recipeR", recipeR);
             } else if (distToPoem <= poemR) {
-                // alert('you selected the Poem!');
                 content.style.display = "block";
                 poemImg.style.display = "block";
                 computerImg.style.display = "none";
                 recipeImg.style.display = "none";
 
             } else if (distToComp <= compR) {
-                alert('you selected the Computer, please go to link https://yitingliu97-escape-room-puzzles-1.glitch.me/Escape-Room-Pattern-Recognition-Puzzle/index.html!');
-                content.style.display = "block";
-                computerImg.style.display = "block";
-                poemImg.style.display = "none";
-                recipeImg.style.display = "none";
-
-
+                openComputerModal()
             } else if (distToKey <= keyR) {
-                alert('you selected the Keycode!');
-                // content.style.display="block";
-                // recipe.style.display="block";
+                alert('key clicked')
             } else {
                 content.style.display = "none";
             }
@@ -134,9 +113,22 @@
             }
         }
 
-
         function dist(x1, y1, x2, y2) {
             return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+        }
+
+        var computerModalContainer = document.getElementById("computerModalContainer");
+
+        function openComputerModal() {
+            computerModalContainer.style.display = "block";
+        }
+
+        function closeComputerModal() {
+            computerModalContainer.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == computerModalContainer) closeComputerModal();
         }
 
 
