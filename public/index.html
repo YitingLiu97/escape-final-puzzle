@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onclick="mousePos(event)">
+<body onclick="onClick(event)" onmousemove="onMouseMove(event)">
     <!-- create intro -->
     <!-- create popup of the images  -->
 
@@ -37,93 +37,110 @@
         <img id="recipe" class="item" src="assets/recipe.png" alt="">
         <!-- <img class="item" style="height:70%"src="assets/keypad.png" alt=""> -->
 
+    </div>
+    <script>
 
-        <script>
+        let content = document.getElementById('content');
+        let computerImg = document.getElementById('computer');
+        let poemImg = document.getElementById('poem');
+        let recipeImg = document.getElementById('recipe');
+        let backgroundImg = document.getElementById('backgroundImg');
 
-            let content = document.getElementById('content');
-            let computerImg = document.getElementById('computer');
-            let poemImg = document.getElementById('poem');
-            let recipeImg = document.getElementById('recipe');
+        // window.onclick = function (event) {
+        //     if (event.target == content) {
+        //         content.style.display = "none";
+        //     }
+        // }
+        function onClick(e) {
+            const x = e.clientX;
+            const y = e.clientY;
 
-            // window.onclick = function (event) {
-            //     if (event.target == content) {
-            //         content.style.display = "none";
-            //     }
-            // }
-            function mousePos(e) {
-                let x = e.clientX;
-                let y = e.clientY;
+            const recipeX = 35.3 / 100 * window.innerWidth;
+            const recipeY = 18.9 / 100 * window.innerWidth;
+            const recipeR = 2.5 / 100 * window.innerWidth;
+            const poemX = 60.8 / 100 * window.innerWidth;
+            const poemY = 29.3 / 100 * window.innerWidth;
+            const poemR = 1.5 / 100 * window.innerWidth;
+            const compX = 44.8 / 100 * window.innerWidth;
+            const compY = 25.4 / 100 * window.innerWidth;
+            const compR = 4.3 / 100 * window.innerWidth;
+            const keyX = 12.5 / 100 * window.innerWidth;
+            const keyY = 29.2 / 100 * window.innerWidth;
+            const keyR = 1.5 / 100 * window.innerWidth;
 
-                recipeX = 35.3 / 100 * window.innerWidth;
-                recipeY = 18.9 / 100 * window.innerWidth;
-                recipeR = 5.73 / 100 * window.innerWidth;
-                console.log('window.innerHeight', window.innerHeight)
+            const distToRecipe = dist(x, y, recipeX, recipeY);
+            const distToPoem = dist(x, y, poemX, poemY);
+            const distToComp = dist(x, y, compX, compY);
+            const distToKey = dist(x, y, keyX, keyY);
 
-                let distToRecipe = dist(x, y, recipeX, recipeY);
-                // console.log('distToRecipe', distToRecipe)
+            if (distToRecipe <= recipeR) {
+                // alert('you selected the recipe!');
+                content.style.display = "block";
+                recipeImg.style.display = "block";
+                poemImg.style.display = "none";
+                computerImg.style.display = "none";
+                // console.log("recipeR", recipeR);
+            } else if (distToPoem <= poemR) {
+                // alert('you selected the Poem!');
+                content.style.display = "block";
+                poemImg.style.display = "block";
+                computerImg.style.display = "none";
+                recipeImg.style.display = "none";
 
-
-                poemX = 60.8 / 100 * window.innerWidth;
-                poemY = 29.3 / 100 * window.innerWidth;
-                poemR = 3.13 / 100 * window.innerWidth;
-
-                let distToPoem = dist(x, y, poemX, poemY);
-
-                compX = 44.8 / 100 * window.innerWidth;
-                compY = 25.4 / 100 * window.innerWidth;
-                compR = 7.29 / 100 * window.innerWidth;
-
-                let distToComp = dist(x, y, compX, compY);
-
-                keyX = 12.5 / 100 * window.innerWidth;
-                keyY = 29.2 / 100 * window.innerWidth;
-                keyR = 2.6 / 100 * window.innerWidth;
-
-                let distToKey = dist(x, y, keyX, keyY);
-                if (distToRecipe <= recipeR) {
-                    // alert('you selected the recipe!');
-                    content.style.display = "block";
-                    recipeImg.style.display = "block";
-                    poemImg.style.display = "none";
-                    computerImg.style.display = "none";
-                    // console.log("recipeR", recipeR);
-                }
-                else if (distToPoem <= poemR) {
-                    // alert('you selected the Poem!');
-                    content.style.display = "block";
-                    poemImg.style.display = "block";
-                    computerImg.style.display = "none";
-                    recipeImg.style.display = "none";
-
-                }
-                else if (distToComp <= compR) {
-                    alert('you selected the Computer, please go to link https://yitingliu97-escape-room-puzzles-1.glitch.me/Escape-Room-Pattern-Recognition-Puzzle/index.html!');
-                    content.style.display = "block";
-                    computerImg.style.display = "block";
-                    poemImg.style.display = "none";
-                    recipeImg.style.display = "none";
+            } else if (distToComp <= compR) {
+                alert('you selected the Computer, please go to link https://yitingliu97-escape-room-puzzles-1.glitch.me/Escape-Room-Pattern-Recognition-Puzzle/index.html!');
+                content.style.display = "block";
+                computerImg.style.display = "block";
+                poemImg.style.display = "none";
+                recipeImg.style.display = "none";
 
 
-                }
-
-                else if (distToKey <= keyR) {
-                    alert('you selected the Keycode!');
-                    // content.style.display="block";
-                    // recipe.style.display="block";
-                } else {
-                    content.style.display = "none";
-                }
-
+            } else if (distToKey <= keyR) {
+                alert('you selected the Keycode!');
+                // content.style.display="block";
+                // recipe.style.display="block";
+            } else {
+                content.style.display = "none";
             }
 
+        }
 
-            function dist(x1, y1, x2, y2) {
-                console.log('y2', y2);
-                return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+        function onMouseMove(e) {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            const recipeX = 35.3 / 100 * window.innerWidth;
+            const recipeY = 18.9 / 100 * window.innerWidth;
+            const recipeR = 2.5 / 100 * window.innerWidth;
+            const poemX = 60.8 / 100 * window.innerWidth;
+            const poemY = 29.3 / 100 * window.innerWidth;
+            const poemR = 1.5 / 100 * window.innerWidth;
+            const compX = 44.8 / 100 * window.innerWidth;
+            const compY = 25.4 / 100 * window.innerWidth;
+            const compR = 4.3 / 100 * window.innerWidth;
+            const keyX = 12.5 / 100 * window.innerWidth;
+            const keyY = 29.2 / 100 * window.innerWidth;
+            const keyR = 1.5 / 100 * window.innerWidth;
+
+            const distToRecipe = dist(x, y, recipeX, recipeY);
+            const distToPoem = dist(x, y, poemX, poemY);
+            const distToComp = dist(x, y, compX, compY);
+            const distToKey = dist(x, y, keyX, keyY);
+
+            if (distToRecipe <= recipeR || distToPoem <= poemR || distToComp <= compR || distToKey <= keyR) {
+                backgroundImg.style.cursor = 'pointer'
+            } else {
+                backgroundImg.style.cursor = 'default'
             }
+        }
 
 
-        </script>
+        function dist(x1, y1, x2, y2) {
+            return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+        }
+
+
+    </script>
 </body>
 
 </html>
