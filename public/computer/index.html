@@ -2,82 +2,82 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Pattern Recognition Puzzle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pattern Recognition Puzzle</title>
 
 </head>
 
 <body>
 
-  <!-- this will show after three attempts of the button -->
-  <!-- <div id="hint">
+    <!-- this will show after three attempts of the button -->
+    <!-- <div id="hint">
         <p>up or low, is it your decision or mine?</p>
     </div> -->
 
 
-  <div id="puzzleIntro">
-    <p>You and your collegues are locked in the room and you only have 10 minutes to figure out the combination of a
-      12-digit lock
-      before the professor comes back from his lunch break. </p>
+    <div id="puzzleIntro">
+        <!-- <p>You and your collegues are locked in the room and you only have 10 minutes to figure out the combination of a
+            12-digit lock
+            before Professor SOIR comes back from his lunch break. </p> -->
+            <p>Destruction initiated by Professor SOIR remotely. 
+                This means you and your collegues only have 15 minutes to escape before the whole building gets burnt down. If you succeed cracking the code in this computer, you are 1/3 way through. </p>
 
-    <p>You find a computer in the room with some instructions. Only after you follow the instructions will you get a
-      four-digit password
-      that is part of the 12-digit code to unlock the padlock. </p>
-    <p> Are you ready to crack the code? </p>
+        <!-- <p>You find a computer in the room with some instructions. Only after you follow the instructions will you get a four-digit password  -->
+            <!-- that is part of the 12-digit code to unlock the padlock. </p> -->
+           <p> Are you ready? </p>
 
-    <button id="ready"
-      onclick="document.getElementById('patternRecognitionPuzzle').style.display='block',document.getElementById('puzzleIntro').style.display='none';">I
-      am ready. </button>
-  </div>
-  <div id="patternRecognitionPuzzle">
+        <button id="ready" onclick="document.getElementById('patternRecognitionPuzzle').style.display='block',document.getElementById('puzzleIntro').style.display='none';">I am ready. </button>
+    </div>
+    <div id="patternRecognitionPuzzle">
 
-    <div id="motto">
-      <h1>Motto: I Do ThINGs WhEn i aM ToLD Not To.</h1>
+        <div id="motto">
+            <h1>Motto: I Do ThINGs WhEn i aM ToLD Not To.</h1>
+        </div>
+
+        <div class="container">
+
+            <p class="item">password</p>
+            <input class="item" id="userInput" type="text" placeholder="******************"
+                onmouseover="placeholder='_ __ ______ ____ _ __ ____ ___ __'">
+            <!-- <p > -->
+
+            <img class="item" onclick="alert('Follow what you see.')"
+                src="https://image.flaticon.com/icons/svg/818/818400.svg" alt="information icon">
+            <!-- </p>  -->
+        </div>
+
+        <div id="userSubmit">
+            <button type="submit" onclick="showResult()"> submit</button>
+        </div>
     </div>
 
-    <div class="container">
+    <script>
+        let counter = 0;
 
-      <p class="item">password</p>
-      <input class="item" id="userInput" type="text" placeholder="******************"
-        onmouseover="placeholder='_ __ ______ ____ _ __ ____ ___ __'">
-      <!-- <p > -->
 
-      <img class="item" onmouseover="alert('Follow what you see.')"
-        src="https://image.flaticon.com/icons/svg/818/818400.svg" alt="information icon">
-      <!-- </p>  -->
-    </div>
+        function showResult() {
+            let password = 'i dO tHingS wHeN I Am tOld nOT tO';
+            if (document.getElementById("userInput").value == password) {
 
-    <div id="userSubmit">
-      <button type="submit" onclick="showResult()"> submit</button>
-    </div>
-  </div>
+                alert("Congrats! Your digits are: 0189");
+                //   counter=0;
+            } else {
+                counter++;
+                console.log(counter);
 
-  <script>
-    let counter = 0;
-
-    // TODO: Move the solution checking portion to server side
-    function showResult() {
-      let password = 'i dO tHingS wHeN I Am tOld nOT tO';
-      if (document.getElementById("userInput").value == password) {
-        alert("Congrats! Your digits are: 0189");
-        //   counter=0;
-      } else {
-        counter++;
-        console.log(counter);
-
-        if (counter == 3) {
-          alert('up or low, is it your decision or mine?');
-          counter = 0;
-        } else {
-          alert("Incorrect!");
+                if (counter == 3) {
+                    alert('up or low, is it your decision or mine?');
+                    counter = 0;
+                } else {
+                    alert("Password Incorrect!");
+                }
+            }
         }
-      }
-    }
 
 
-  </script>
+    </script>
 
 </body>
 
