@@ -58,8 +58,13 @@
 
 
         function showResult() {
-            let password = 'i dO tHingS wHeN I Am tOld nOT tO';
-            if (document.getElementById("userInput").value == password) {
+            let passwords = [
+                'i dO tHingS wHeN I Am tOld nOT tO',
+                'i dO tHingS wHeN I Am tOld nOT tO.',
+                'mOTTO: i dO tHingS wHeN I Am tOld nOT tO',
+                'mOTTO: i dO tHingS wHeN I Am tOld nOT tO.',
+            ];
+            if (passwords.includes(document.getElementById("userInput").value)) {
 
                 alert("Congrats! Your digits are: 0189");
                 //   counter=0;
