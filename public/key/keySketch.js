@@ -62,7 +62,7 @@ $(document).ready(function () {
     }
 
     escape = function() {
-        window.alert("You did it! You're all out of the room. Congrats! \nNow go out and inform the world of the professor's atrocities!")
+        window.alert("Congrats, you did it! Hard work pays off!")
         socket.emit('command', 'ESCAPE');
     }
 
