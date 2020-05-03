@@ -33,14 +33,14 @@
     <div id="patternRecognitionPuzzle">
 
         <div id="motto">
-            <h1>Motto: I Do ThINGs WhEn i aM ToLD Not To.</h1>
+            <h1>Motto: I wOnT fOllOW.</h1>
         </div>
 
         <div class="container">
 
             <p class="item">password</p>
-            <input class="item" id="userInput" type="text" placeholder="******************"
-                onmouseover="placeholder='_ __ ______ ____ _ __ ____ ___ __'">
+            <input class="item" id="userInput" type="text" placeholder="**********"
+                onmouseover="placeholder='_ ____ ______'">
             <!-- <p > -->
 
             <img class="item" onclick="alert('Follow what you see.')"
@@ -59,10 +59,14 @@
 
         function showResult() {
             let passwords = [
-                'i dO tHingS wHeN I Am tOld nOT tO',
-                'i dO tHingS wHeN I Am tOld nOT tO.',
-                'mOTTO: i dO tHingS wHeN I Am tOld nOT tO',
-                'mOTTO: i dO tHingS wHeN I Am tOld nOT tO.',
+                'i WoNt foLLow',
+                'i WoNt foLLow.',
+                'mOTTO:i WoNt foLLow.',
+                'MOTTO:i WoNt foLLow.',
+                'motto:i WoNt foLLow.',
+                'mOTTO:i WoNt foLLow',
+                'MOTTO:i WoNt foLLow',
+                'motto:i WoNt foLLow',
             ];
             if (passwords.includes(document.getElementById("userInput").value)) {
 
